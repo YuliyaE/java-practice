@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<Configuration status = "FATAL">
+	<Properties>
+		<property name="pattern">
+		%d(yyyy-MM-dd HH:mm:ss} [%t} %-5level %logger{5}- %msg%n
+		</property>
+	</Properties>
+	<Appenders>
+		<RollingFile name="RollingFile" fileName="logs/text.log"
+					 filePattern="logs/$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log.gz">
+			<PatternLayout pattern="${pattern}"/>
+		</RollingFile>
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout pattern="%d{dd/MMM/yyyy HH:mm:ss,SSS}- %c{1}: %m%n"/>
+		</Console>
+	</Appenders>
+	<Loggers>
+		<Root level="fatal">
+			<Appender-ref ref="RollingFile" level ="fatal" />
+            <Appender-ref ref="Console" level ="fatal" />
+		</Root>
+	</Loggers>
+</Configuration>
+
+
+
+
+
